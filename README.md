@@ -8,6 +8,10 @@ Cadastro de Pessoas
 
 * Como executar o projeto
 
+Clone o repositório
+```
+https://github.com/Luana-s/api-frask.git
+```
 
 Ter o python 3 instalado e o pacote pip.
 
@@ -25,6 +29,9 @@ python app.py
 
 ```
 **Acessando a API:**
-Acesse o endereço http://localhost:5000/pessoas em um navegador web.
+Acesse o endereço:   http://localhost:5000/person em um navegador web.
 
+
+**Endpoints**
+Acesso às endpoints GET, POST, PUT, DELETE, PATCH, OPTIONS e HEAD pelo POSTAM.
 
