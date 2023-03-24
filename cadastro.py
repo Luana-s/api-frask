@@ -1,4 +1,4 @@
-pessoas=[
+pessoa=[
     {   
         "id": 1,
         "nome": "Maria",
