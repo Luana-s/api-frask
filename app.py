@@ -36,6 +36,7 @@ def patch(id):
             busca.update(pessoa_atualizada)
             return jsonify({'pessoa': busca, 'resposta': 'pessoa atualizada'}), 200
     return jsonify({'resposta': 'pessoa não encontrada'}), 404
+
 @app.route('/pessoas', methods=['HEAD'])
 
 def head():
@@ -70,4 +71,4 @@ def options():
 
 
 
-app.run(port=5000,host='localhost',debug=True)
+app.run(port=5000,host='0.0.0',debug=True)
