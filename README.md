@@ -8,7 +8,7 @@ Cadastro de Pessoas
 
 
 **Endpoints**
-Acesso às endpoints GET, POST, PUT, DELETE, PATCH, OPTIONS e HEAD pelo POSTAM.
+Acesso às endpoints GET, POST, PUT, DELETE, PATCH, OPTIONS e HEAD pelo POSTMAN.
 
 ## Como executar o projeto
 
