@@ -17,12 +17,12 @@ Acesso às endpoints GET, POST, PUT, DELETE, PATCH, OPTIONS e HEAD pelo POSTMAN.
 * Ter o Docker instalado
 
 ```
-docker pull luanas/projeto-python:latest
+docker pull luanas/frask:novo
 
 ```
 
 **Acessando a API:**
-Acesse o endereço:   http://localhost:5000/person em um navegador web.
+Acesse o endereço:   http://127.0.0.1:5002/person em um navegador web.
 
 
 
@@ -52,7 +52,7 @@ python app.py
 
 ```
 **Acessando a API:**
-Acesse o endereço:   http://localhost:5000/person em um navegador web.
+Acesse o endereço:  http://127.0.0.1:5002/person em um navegador web.
 
 
 
