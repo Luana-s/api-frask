@@ -23,39 +23,40 @@ def get_id(id):
         
 @app.route('/person',methods=['POST'])
 def post():
-    novo_pessoa = request.get_json()
-    pessoas.append(novo_pessoa)
+    nova_pessoa = request.get_json()
+    pessoas.append(nova_pessoa)
     return jsonify({'pessoas': pessoas,'resposta': 'pessoa adicionada'})
 
 
 @app.route('/person/<int:id>', methods=['PATCH'])
-def update_pessoa(id):
+def patch(id):
     pessoa_atualizada = request.get_json()
-    for pessoa in pessoas:
-        if pessoa.get('id') == id:
-            pessoa.update(pessoa_atualizada)
-            return jsonify({'pessoa': pessoa, 'resposta': 'pessoa atualizada'}), 200
+    for busca in pessoas:
+        if busca.get('id') == id:
+            busca.update(pessoa_atualizada)
+            return jsonify({'pessoa': busca, 'resposta': 'pessoa atualizada'}), 200
     return jsonify({'resposta': 'pessoa não encontrada'}), 404
 @app.route('/pessoas', methods=['HEAD'])
+
 def head():
     return '', 200, {'Content-Type': 'application/json'}
 
 @app.route('/person/<int:id>', methods=['PUT'])
-def update_livro(id):
-    pessoa_alterado = request.get_json()
+def put(id):
+    pessoa_alterada = request.get_json()
     for busca in pessoas:
         if busca['id'] == id:
-            busca.update(pessoa_alterado)
+            busca.update(pessoa_alterada)
             return jsonify(busca)
     return jsonify({"message": "pessoa não encontrado"})
 
 
 
 @app.route('/person/<int:id>', methods=['DELETE'])
-def excluir_pessoa(id):
-    for pessoa in pessoas:
-        if pessoa['id'] == id:
-            pessoas.remove(pessoa)
+def delete(id):
+    for busca in pessoas:
+        if busca['id'] == id:
+            pessoas.remove(busca)
             return jsonify({'pessoas': pessoas,'resposta': 'Pessoa excluída com sucesso.'}),200
     return jsonify({'erro': 'Pessoa não encontrada.'}), 404
 
