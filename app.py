@@ -1,12 +1,12 @@
 from flask import Flask, jsonify, request
 from cadastro import pessoas
 
-
+#409
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-
+id = 0
 
 @app.route('/person',methods=['GET'])
 def get():
@@ -14,17 +14,26 @@ def get():
 
    
 
-@app.route('/person/<int:id>',methods=['GET'])
-def get_id(id):
-    for busca in pessoas:
-        if busca.get('id') == id:
-            return jsonify(pessoas)
+def verificaEmail(email):
+    for pessoa in pessoas:
+        if pessoa.get('email') == email:
+            return True
+    return False
         
-        
-@app.route('/person',methods=['POST'])
+
+
+
+
+@app.route('/person', methods=['POST'])
 def post():
+    global id
     nova_pessoa = request.get_json()
+    if verificaEmail(nova_pessoa['email']):
+        return jsonify({'resposta': 'Esse E-mail já está cadastrado no sistema.'}), 409
+    
+    nova_pessoa['id'] = id + 1
     pessoas.append(nova_pessoa)
+    id += 1
     return jsonify({'pessoas': pessoas,'resposta': 'pessoa adicionada'})
 
 
@@ -56,7 +65,7 @@ def put(id):
 @app.route('/person/<int:id>', methods=['DELETE'])
 def delete(id):
     for busca in pessoas:
-        if busca['id'] == id:
+         if 'id' in busca and busca['id'] == id:
             pessoas.remove(busca)
             return jsonify({'pessoas': pessoas,'resposta': 'Pessoa excluída com sucesso.'}),200
     return jsonify({'erro': 'Pessoa não encontrada.'}), 404
